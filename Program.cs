@@ -50,7 +50,6 @@ namespace EmailFromSQL
         private static string GetMailMessage()
         {
             string SqlString = GetSqlHTML();
-            //string[] rowHTML = SqlString.Split(',');
             StringBuilder HTMLBody = new StringBuilder();
             HTMLBody.Append("<HTML>");
             HTMLBody.Append("<HEAD>");
@@ -89,11 +88,6 @@ namespace EmailFromSQL
 
             HTMLBody.Append("</TR>");
 
-            //for (int i = 0; i < rowHTML.Length; i++)
-            //{
-            //HTMLBody.Append(rowHTML[i]);
-            //}
-
             HTMLBody.Append(SqlString);
 
             HTMLBody.Append("</TABLE>");
@@ -102,7 +96,6 @@ namespace EmailFromSQL
             return HTMLBody.ToString();
         }
 
-        //TODO: Fix spacing for columns
         public static string GetSqlHTML()
         {
             string output = "";
@@ -122,10 +115,6 @@ namespace EmailFromSQL
                         {
                             while (reader.Read())
                             {
-                                //    output += string.Format(
-                                //        "<tr><td>{0}</td> <td>{1}</td> <td>{2}</td> <td>{3}</td> <td>{4}</td> <td>{5}</td> </tr>,", 
-                                //        reader.GetValue(0).ToString().Trim(), reader.GetValue(1).ToString().Trim(), reader.GetValue(2).ToString().Trim(), reader.GetValue(3).ToString().Trim(), reader.GetValue(4).ToString().Trim(), reader.GetValue(5).ToString().Trim());
-
                                 Object[] values = new Object[reader.FieldCount];
                                 int count = reader.GetValues(values);
                                 output += "<tr>";
